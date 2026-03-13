@@ -1,12 +1,19 @@
 import './App.css'
 
-function App() {
+import { useEffect } from "react"
+import { useMemorySimulator } from "./hooks/useMemorySimulator"
 
-  return (
-    <>
-      <h1>Operative Systems!</h1>
-    </>
-  )
+export default function App() {
+
+  const sim = useMemorySimulator(32)
+
+  useEffect(() => {
+    // @ts-ignore
+    window.sim = sim
+    sim.changeAlgorithm()
+  }, [])
+  
+  console.log(sim.algorithm)
+  return null
+
 }
-
-export default App
